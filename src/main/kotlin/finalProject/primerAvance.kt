@@ -6,9 +6,5 @@ fun main(){
 
     registroEjemplo.rolAlumnoMaestro()
 
-
-
-
-
 }
 
