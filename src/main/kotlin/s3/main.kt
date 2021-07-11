@@ -1,6 +1,7 @@
 package s3
 
 import kotlinx.coroutines.*
+import s8.tiempoCarga
 
 var primerAcierto : Int = 0
 var segundoAcierto: Int = 0
@@ -9,6 +10,7 @@ var habilidad: String = ""
 
 fun main(){
     var options = Options()
+    var carga = tiempoCarga()
     var disponibilidadTiempo: String
     val week = setOf("LUNES","MARTES", "MIERCOLES",  "JUEVES", "VIERNES" , "SABADO", "DOMINGO" )
 
@@ -89,31 +91,10 @@ fun main(){
          }).toString()
 
         println("A continuación aplicaremos una breve actividad para conocer un poco sobre tus conocimientos en la materia.\n")
-        println("Presiona Enter para continuar.\n")
-        readLine().toString()
 
-        runBlocking {
-            val buyJob = launch(Dispatchers.Default) {
-                var percentage = 0
+        carga.cargaPantallaEvaluacion()
 
-                println("¿Preparado?\n")
-                println("Presiona Enter para preparar tu evaluación")
-                readLine().toString()
-                println("Afinando intrumentos\n")
-                while (percentage<100){
-                    println("Carga al $percentage%")
-                    delay(400)
-                    percentage+=25
-                }
-                println("¡Evaluación lista!\n")
-            }
-        }
-
-        println("Presiona Enter para continuar")
-        readLine().toString()
-
-
-       options.play("uno")
+        options.play("uno")
         print("¿Desesa reproducirla de nuevo?")
         var again: String = readLine().toString().toUpperCase()
 
@@ -154,18 +135,6 @@ fun main(){
     val persona = Person("$nombre", edad, "$ciudad", "", "$disponibilidadTiempo")
     if(rol == 1){
 
-        runBlocking {
-            val buyJob = launch(Dispatchers.Default) {
-                var percentage = 0
-
-                while (percentage<100){
-                    println("procesando pago: $percentage%")
-                    delay(500)
-                    percentage+=10
-                }
-                println("Pago exitoso!")
-            }
-        }
 
         val alumnRol = AlumnRol("$habilidad",score, "$instrumento" )
     }else if (rol == 2){

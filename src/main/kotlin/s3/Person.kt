@@ -1,5 +1,7 @@
 package s3
 
+import s8.tiempoCarga
+
 const val PHONE_LENGTH = 10
 
 class Person  ( var name: String,
@@ -8,11 +10,20 @@ class Person  ( var name: String,
                 var rol: String,
                 var schedule:String ) {
 
+
+
     init {
-        println("Hey! $name estamos procesando tu registro \n " +
-                "Un momento por favor... \n" +
-                "Registro exitoso \n" +
-                "Nombre: $name \n Edad: $age \n Ciudad de residencia: $city")
+        var cargaPantallaRegistro = tiempoCarga()
+
+        println("¡Excelente! $name \n " +
+                "A continuación mostraremos tus datos ingresados para dar inicio a tu registro \n" +
+                "Un momento por favor... \n")
+
+        cargaPantallaRegistro.cargaPantallaRegistro()
+
+        println("Nombre: $name \n Edad: $age \n Ciudad de residencia: $city \n")
+        readLine().toString()
+
     }
 
 
@@ -43,4 +54,4 @@ class Person  ( var name: String,
     }
 
 
-    }
+}
