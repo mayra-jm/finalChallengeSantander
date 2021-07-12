@@ -1,9 +1,11 @@
-package s3
+package finalProject
 
 import s3.Models.AlumnRol
 import s3.Models.Login
 import s3.Models.Options
 import s3.Models.ProfessRol
+import s4.Models.InstrumentoMusical
+import s4.Models.InstrumentoMusicalLowSeason
 import s8.tiempoCarga
 
 var primerAcierto: Int = 0
@@ -77,6 +79,7 @@ fun main() {
                                 "Por este motivo, tocar la guitarra puede ayudarte a direccionar todas tus emociones.\n"
                     )
                     instrumento = "Guitarra"
+
                 }
                 2 -> {
                     println(
@@ -165,6 +168,12 @@ fun main() {
 
     if (rol == 1) {
         AlumnRol("$nombre", edad, "$ciudad", "$disponibilidadTiempo", "$habilidad", score, "$instrumento")
+        val precioCurso = InstrumentoMusical("$instrumento")
+        precioCurso.quotePrice(1)
+        val precioCursoDesc = InstrumentoMusicalLowSeason ("$instrumento")
+        precioCursoDesc.reserve(1)
+
+
     } else if (rol == 2) {
          ProfessRol("$nombre", edad, "$ciudad", "$disponibilidadTiempo", "$instrumento")
     }

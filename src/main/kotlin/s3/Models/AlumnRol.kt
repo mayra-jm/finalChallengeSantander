@@ -1,18 +1,19 @@
-package s3
+package s3.Models
 
-import kotlinx.coroutines.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import s3.Person
 import s8.tiempoCarga
 
-class AlumnRol(var hability: String,
-               var score: Int,
-               var instrument: String) {
+class AlumnRol(name:String, age:Int, city:String, schedule:String, var hability: String,var score: Int, var instrument: String)
+    : Person(name, age, city, schedule) {
 
     init {
 
         var registroFinalizado = tiempoCarga()
+
+        println("¡Excelente! $name \n " +
+                "A continuación mostraremos tus datos ingresados para dar inicio a tu registro \n" +
+                "Un momento por favor... \n")
+
 
         registroFinalizado.pantallaRegistroFinalizado()
 

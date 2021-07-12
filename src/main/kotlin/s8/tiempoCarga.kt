@@ -60,7 +60,7 @@ class tiempoCarga {
                     delay(500)
                     percentage+=15
                 }
-                println("Registro exitoso exitoso!")
+                println("Registro exitoso!")
             }
         }
     }
