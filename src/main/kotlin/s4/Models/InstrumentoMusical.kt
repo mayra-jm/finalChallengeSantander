@@ -7,7 +7,7 @@ open class InstrumentoMusical(override val instrumento:String): Curso(){
     protected val fees = mapOf(
         "Guitarra" to 1400,
         "Piano" to 1350,
-        "Bateria" to 1360,
+        "Batería" to 1360,
         "Violín" to 1240,
         "Bajo" to 1320
     )

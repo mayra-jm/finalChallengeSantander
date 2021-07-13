@@ -1,9 +1,9 @@
 package finalProject
 
-import s3.Models.AlumnRol
-import s3.Models.Login
-import s3.Models.Options
-import s3.Models.ProfessRol
+import finalProject.Models.AlumnRol
+import finalProject.Models.Login
+import finalProject.Models.Options
+import finalProject.Models.ProfessRol
 import s4.Models.InstrumentoMusical
 import s4.Models.InstrumentoMusicalLowSeason
 import s8.tiempoCarga
@@ -14,18 +14,31 @@ var instrumento: String = ""
 var habilidad: String = ""
 
 fun main() {
+
     var options = Options()
     var carga = tiempoCarga()
     var login = Login()
     var disponibilidadTiempo: String
     val week = setOf("LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO", "DOMINGO")
 
-    println("Bienvenido a Enarmonía \n Para acceder a esta aplicación, necesitas iniciar sesión")
-    println("Ingresa tu correo electrónico")
-    var mail = readLine().toString()
-    println("Ingresa tu contraseña")
-    var pass = readLine().toString()
-    login.login(mail, pass)
+    println("Bienvenido a Enarmonía \n Para acceder a esta aplicación, necesitas iniciar sesión \n ¿Te gustaría registrarte y formar parte de esta familia?")
+    var register = readLine().toString().toUpperCase()
+    if(register == "SI"){
+        println("Ingresa tu correo electrónico")
+        val email = readLine().toString()
+        println("Ingresa tu contraseña")
+        val pass = readLine().toString()
+        login.updateLogin(email, pass )
+
+    }else{
+        println("Sentimos mucho que no te registres, vuelve pronto!")
+        return
+    }
+
+    println("Felicidades! te has registrado exitosamente \n ------------------------------\nIniciar Sesión")
+
+    login.inicioSesion()
+
 
     println("Por favor selecciona tu tipo de perfil")
     println("1) Alumno")
@@ -44,8 +57,6 @@ fun main() {
 
     println("¿Cuántos años tienes?")
     var edad: Int = readLine()!!.toInt()
-
-
 
     println("¿De qué ciudad eres?")
     var ciudad: String = readLine().toString()

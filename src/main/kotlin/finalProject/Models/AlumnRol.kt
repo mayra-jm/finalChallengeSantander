@@ -22,5 +22,8 @@ class AlumnRol(name:String, age:Int, city:String, schedule:String, var hability:
                 "Estimado usuario, es un gusto para nosotros poder ser parte del primer paso este nuevo viaje \n " +
                 "En cuanto contemos con un maestro adecuado a tus habilidades y disponibilidad nos comunicaremos contigo"
         )
+
     }
+
+
 }
