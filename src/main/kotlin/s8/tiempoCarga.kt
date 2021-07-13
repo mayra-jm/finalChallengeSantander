@@ -7,7 +7,7 @@ import kotlinx.coroutines.runBlocking
 
 class tiempoCarga {
 
-    //Función para agregar interacción de carga con el usuario.
+    //Función para agregar interacción de carga con el usuario haciendo uso de CorotineScope
     fun cargaPantallaEvaluacion(){
         runBlocking {
             val buyJob = launch(Dispatchers.Default) {

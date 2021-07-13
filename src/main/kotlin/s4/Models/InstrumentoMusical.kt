@@ -22,7 +22,7 @@ open class InstrumentoMusical(override val instrumento:String): Curso(){
         if(price==0){ //si no existe tarifa para ese instrumento, se notifica al usuario
             println("Lo sentimos, aún no contamos con esas clases")
         } else{
-            println("El costo mensual para las clases de $instrumento cuestan \$$price") //se notifica el precio al usuario
+            println("El costo mensual para las clases de $instrumento es de \$$price") //se notifica el precio al usuario
         }
     }
 }

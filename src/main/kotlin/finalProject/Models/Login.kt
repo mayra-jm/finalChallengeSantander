@@ -1,23 +1,25 @@
 package finalProject.Models
 
-import s3.main
 
 class Login {
     private var correo: String = ""
-        set(value){  //Utilizamos un setter para guardar un valor sólo cuando cumpla con los 10 dígitos de un número telefónico
+        set(value){  //Utilizamos un setter para guardar un valor sólo cuando contenga un @
             if(value.contains("@") ){
                 field = value
             } else{
-                println("El correo que ingresaste no es válido")
+                println("El correo que ingresaste no es válido, vuelve a intentarlo")
+                register()
+                return
             }
         }
 
     private var pass: String = ""
-        set(value){  //Utilizamos un setter para guardar un valor sólo cuando cumpla con los 10 dígitos de un número telefónico
+        set(value){  //Utilizamos un setter para guardar un valor sólo cuando el campo no se encuentre vacío
             if(!value.isEmpty()){
                 field = value
             } else{
-                println("Error al obtener tu contraseña")
+                println("Tu contraseña debe contener al menos 1 caracter, vuelve a intentarlo")
+                register()
                 return
             }
         }
@@ -27,6 +29,7 @@ class Login {
         this.pass =  password
     }
 
+    //función para validar el inicio de sesión
     fun login(email: String, password:String): Boolean{
         if(email== correo && password== pass){
             println("Inicio de sesión exitoso")
@@ -37,7 +40,7 @@ class Login {
             return false
         }
     }
-
+    //función para realizar inicio de sesión
     fun inicioSesion(){
         println("Correo Electrónico:")
         var mail = readLine().toString()
@@ -45,5 +48,13 @@ class Login {
         var pass = readLine().toString()
         this.login(mail, pass)
 
+    }
+    //función para realizar el registro del usuario
+    fun register(){
+        println("Ingresa tu correo electrónico")
+        val email = readLine().toString()
+        println("Ingresa tu contraseña")
+        val pass = readLine().toString()
+        updateLogin(email, pass )
     }
 }

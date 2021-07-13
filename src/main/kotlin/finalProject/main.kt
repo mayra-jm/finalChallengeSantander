@@ -14,22 +14,17 @@ var instrumento: String = ""
 var habilidad: String = ""
 
 fun main() {
-
     var options = Options()
     var carga = tiempoCarga()
     var login = Login()
+    var edad: Int = 0
     var disponibilidadTiempo: String
     val week = setOf("LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO", "DOMINGO")
 
     println("Bienvenido a Enarmonía \n Para acceder a esta aplicación, necesitas iniciar sesión \n ¿Te gustaría registrarte y formar parte de esta familia?")
     var register = readLine().toString().toUpperCase()
     if(register == "SI"){
-        println("Ingresa tu correo electrónico")
-        val email = readLine().toString()
-        println("Ingresa tu contraseña")
-        val pass = readLine().toString()
-        login.updateLogin(email, pass )
-
+        login.register()
     }else{
         println("Sentimos mucho que no te registres, vuelve pronto!")
         return
@@ -37,6 +32,7 @@ fun main() {
 
     println("Felicidades! te has registrado exitosamente \n ------------------------------\nIniciar Sesión")
 
+    //Se llama a la función que inicia sesión de la clase Login
     login.inicioSesion()
 
 
@@ -44,6 +40,7 @@ fun main() {
     println("1) Alumno")
     println("2) Profesor")
     var rol = readLine()?.toInt()
+
     when (rol) {
         1 -> "Alumno"
         2 -> "Profesor"
@@ -54,9 +51,14 @@ fun main() {
     var nombre: String = readLine().toString()
 
     println("Bienvenido $nombre")
-
     println("¿Cuántos años tienes?")
-    var edad: Int = readLine()!!.toInt()
+    //se hace uso del try catch, en caso de que el usuario introduzca algo diferente a un número
+    try{
+        edad = readLine()!!.toInt()
+
+    } catch (e: NumberFormatException){
+        println("Por favor, escribe una opción válida")
+    }
 
     println("¿De qué ciudad eres?")
     var ciudad: String = readLine().toString()
@@ -191,4 +193,6 @@ fun main() {
 
 
 }
+
+
 
